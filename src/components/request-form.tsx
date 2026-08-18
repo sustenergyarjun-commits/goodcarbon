@@ -83,13 +83,13 @@ export function RequestForm() {
               onSubmit={onSubmit}
               className="grid gap-6 rounded-sm border border-border bg-card p-6 sm:grid-cols-2 sm:p-10"
             >
-              {[
+              {([
                 ["industry", "Industry Name", "text", "e.g. Manufacturing / Hospital"],
                 ["name", "Name", "text", "Full name"],
                 ["email", "Email", "email", "you@company.com"],
                 ["phone", "Phone", "tel", "+91 00000 00000"],
                 ["location", "Location", "text", "City, State"],
-              ].map(([name, labelText, type, placeholder]) => (
+              ] as Array<[string, string, string, string]>).map(([name, labelText, type, placeholder]) => (
                 <div key={name}>
                   <label className={label} htmlFor={name}>
                     {labelText}
