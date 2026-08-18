@@ -90,7 +90,7 @@ export function Cta({ children, to, href, hash, variant = "solid", className = "
   }
   if (to) {
     return (
-      <Link to={to} hash={hash} className={cls}>
+      <Link to={to} {...(hash ? { hash } : {})} className={cls}>
         {children}
       </Link>
     );
