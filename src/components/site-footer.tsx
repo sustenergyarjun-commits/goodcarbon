@@ -16,7 +16,7 @@ export function SiteFooter() {
                 width={1920}
                 height={960}
                 loading="lazy"
-                className="h-8 w-auto object-contain"
+                className="h-12 w-auto object-contain"
               />
             </div>
             <p className="mt-6 text-base font-bold">Good Carbon Pvt. Ltd.</p>
@@ -43,8 +43,13 @@ export function SiteFooter() {
             <p className="eyebrow text-silver">Contact</p>
             <ul className="mt-5 space-y-3 text-sm text-silver">
               <li>
-                <a href="mailto:goodcarbon.energy@gmail.com" className="hover:text-white">
-                  goodcarbon.energy@gmail.com
+                <a href="mailto:jk@goodcarbon.in" className="hover:text-white">
+                  jk@goodcarbon.in
+                </a>
+              </li>
+              <li>
+                <a href="mailto:sudheer@goodcarbon.in" className="hover:text-white">
+                  sudheer@goodcarbon.in
                 </a>
               </li>
               <li>
