@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as StrategyRouteImport } from './routes/strategy'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StrategyRoute = StrategyRouteImport.update({
   id: '/strategy',
   path: '/strategy',
@@ -32,30 +38,34 @@ const StrategyRoute = StrategyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/solutions': typeof SolutionsRoute
   '/strategy': typeof StrategyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/solutions': typeof SolutionsRoute
   '/strategy': typeof StrategyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/solutions': typeof SolutionsRoute
   '/strategy': typeof StrategyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/strategy'
+  fullPaths: '/' | '/about' | '/solutions' | '/strategy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/strategy'
-  id: '__root__' | '/' | '/about' | '/strategy'
+  to: '/' | '/about' | '/solutions' | '/strategy'
+  id: '__root__' | '/' | '/about' | '/solutions' | '/strategy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  SolutionsRoute: typeof SolutionsRoute
   StrategyRoute: typeof StrategyRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/strategy': {
       id: '/strategy'
       path: '/strategy'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  SolutionsRoute: SolutionsRoute,
   StrategyRoute: StrategyRoute,
 }
 export const routeTree = rootRouteImport
