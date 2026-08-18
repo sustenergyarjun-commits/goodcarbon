@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as StrategyRouteImport } from './routes/strategy'
+import { Route as TrainingRouteImport } from './routes/training'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const StrategyRoute = StrategyRouteImport.update({
   path: '/strategy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainingRoute = TrainingRouteImport.update({
+  id: '/training',
+  path: '/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/industries': typeof IndustriesRoute
   '/solutions': typeof SolutionsRoute
   '/strategy': typeof StrategyRoute
+  '/training': typeof TrainingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/industries': typeof IndustriesRoute
   '/solutions': typeof SolutionsRoute
   '/strategy': typeof StrategyRoute
+  '/training': typeof TrainingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,22 @@ export interface FileRoutesById {
   '/industries': typeof IndustriesRoute
   '/solutions': typeof SolutionsRoute
   '/strategy': typeof StrategyRoute
+  '/training': typeof TrainingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/industries' | '/solutions' | '/strategy'
+  fullPaths:
+    '/' | '/about' | '/industries' | '/solutions' | '/strategy' | '/training'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/industries' | '/solutions' | '/strategy'
-  id: '__root__' | '/' | '/about' | '/industries' | '/solutions' | '/strategy'
+  to: '/' | '/about' | '/industries' | '/solutions' | '/strategy' | '/training'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/industries'
+    | '/solutions'
+    | '/strategy'
+    | '/training'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +94,7 @@ export interface RootRouteChildren {
   IndustriesRoute: typeof IndustriesRoute
   SolutionsRoute: typeof SolutionsRoute
   StrategyRoute: typeof StrategyRoute
+  TrainingRoute: typeof TrainingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +134,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StrategyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/training': {
+      id: '/training'
+      path: '/training'
+      fullPath: '/training'
+      preLoaderRoute: typeof TrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +150,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndustriesRoute: IndustriesRoute,
   SolutionsRoute: SolutionsRoute,
   StrategyRoute: StrategyRoute,
+  TrainingRoute: TrainingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
