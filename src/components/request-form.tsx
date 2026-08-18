@@ -1,4 +1,6 @@
 import { useState, type FormEvent } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { submitServiceRequest } from "@/lib/service-request.functions";
 import { Container, SectionHeading } from "./ui-kit";
 import { Reveal } from "./reveal";
 
@@ -17,8 +19,11 @@ type Errors = Record<string, string>;
 export function RequestForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const send = useServerFn(submitServiceRequest);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const get = (k: string) => String(fd.get(k) ?? "").trim();
@@ -37,7 +42,28 @@ export function RequestForm() {
     if (get("message").length > 1000) next["message"] = "Message must be under 1000 characters.";
 
     setErrors(next);
-    if (Object.keys(next).length === 0) setSent(true);
+    if (Object.keys(next).length > 0) return;
+
+    setSubmitError(null);
+    setSubmitting(true);
+    try {
+      await send({
+        data: {
+          industry: get("industry"),
+          name: get("name"),
+          email,
+          phone,
+          location: get("location"),
+          service: get("service"),
+          message: get("message"),
+        },
+      });
+      setSent(true);
+    } catch {
+      setSubmitError("Something went wrong while sending your request. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   const field =
@@ -58,12 +84,10 @@ export function RequestForm() {
               className="rounded-sm border border-slate-brand/30 bg-card p-10 text-center"
             >
               <p className="eyebrow text-muted-foreground">Request received</p>
-              <h3 className="mt-4 text-2xl font-extrabold tracking-tight">
-                Thank you — your request has been recorded.
-              </h3>
+              <h3 className="mt-4 text-2xl font-extrabold tracking-tight">Thank You</h3>
               <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                A Good Carbon specialist will review your requirement and respond shortly. For an
-                immediate conversation, call{" "}
+                Your service request has been received successfully. Our team will get back to you
+                shortly. For an immediate conversation, call{" "}
                 <a href="tel:+919381790065" className="font-semibold text-foreground underline">
                   +91 93817 90065
                 </a>
@@ -148,12 +172,19 @@ export function RequestForm() {
                 ) : null}
               </div>
 
+              {submitError ? (
+                <p role="alert" className="text-sm font-semibold text-destructive sm:col-span-2">
+                  {submitError}
+                </p>
+              ) : null}
+
               <div className="sm:col-span-2">
                 <button
                   type="submit"
-                  className="w-full rounded-sm bg-primary px-8 py-4 text-sm font-bold tracking-wider text-primary-foreground uppercase transition-all duration-300 hover:bg-deep hover:-translate-y-0.5 sm:w-auto"
+                  disabled={submitting}
+                  className="w-full rounded-sm bg-primary px-8 py-4 text-sm font-bold tracking-wider text-primary-foreground uppercase transition-all duration-300 hover:bg-deep hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
-                  Get Service
+                  {submitting ? "Sending…" : "Get Service"}
                 </button>
               </div>
             </form>
