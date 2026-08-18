@@ -7,7 +7,7 @@ import { FinalCtaSection } from "@/components/sections";
 
 const title = "Contact Good Carbon | Request an Energy Optimisation Consultation";
 const description =
-  "Talk to Good Carbon Pvt. Ltd. in Chennai about energy audits, decarbonisation and energy optimisation programmes that improve EBITDA. Email goodcarbon.energy@gmail.com or call +91 93817 90065.";
+  "Talk to Good Carbon Pvt. Ltd. in Chennai about energy audits, decarbonisation and energy optimisation programmes that improve EBITDA. Email jk@goodcarbon.in or call +91 93817 90065.";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -50,10 +50,16 @@ function ContactPage() {
               <h3 className="eyebrow text-muted-foreground">Email</h3>
               <p className="mt-4 text-sm">
                 <a
-                  href="mailto:goodcarbon.energy@gmail.com"
-                  className="font-semibold underline underline-offset-4"
+                  href="mailto:jk@goodcarbon.in"
+                  className="block font-semibold underline underline-offset-4"
                 >
-                  goodcarbon.energy@gmail.com
+                  jk@goodcarbon.in
+                </a>
+                <a
+                  href="mailto:sudheer@goodcarbon.in"
+                  className="mt-2 block font-semibold underline underline-offset-4"
+                >
+                  sudheer@goodcarbon.in
                 </a>
               </p>
             </div>

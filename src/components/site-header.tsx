@@ -32,7 +32,7 @@ export function SiteHeader() {
           : "border-transparent bg-white"
       }`}
     >
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3 sm:px-8 lg:flex lg:justify-between">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 sm:px-8 lg:flex lg:justify-between">
         <Link to="/" className="flex min-w-0 items-center" aria-label="Good Carbon home">
           <img
             src={logo.url}
@@ -40,7 +40,7 @@ export function SiteHeader() {
             width={1920}
             height={960}
             className={`w-auto object-contain transition-all duration-300 ${
-              scrolled ? "h-8" : "h-9 sm:h-10"
+              scrolled ? "h-12" : "h-14 sm:h-15"
             }`}
           />
         </Link>

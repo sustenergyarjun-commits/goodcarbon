@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
           "@type": "Organization",
           name: "Good Carbon Pvt. Ltd.",
           description,
-          email: "goodcarbon.energy@gmail.com",
+          email: "jk@goodcarbon.in",
           telephone: "+91 93817 90065",
           address: {
             "@type": "PostalAddress",
