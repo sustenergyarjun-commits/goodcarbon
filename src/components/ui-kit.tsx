@@ -64,7 +64,7 @@ type CtaProps = {
   to?: string;
   href?: string;
   hash?: string;
-  variant?: "solid" | "outline" | "light";
+  variant?: "solid" | "outline" | "light" | "white";
   className?: string;
   type?: "submit" | "button";
 };
@@ -77,6 +77,7 @@ const styles = {
   outline:
     "border border-slate-brand/30 text-foreground hover:border-slate-brand hover:bg-secondary hover:-translate-y-0.5",
   light: "border border-silver/40 text-white hover:bg-white/10 hover:-translate-y-0.5",
+  white: "bg-white text-[#142328] hover:bg-silver hover:-translate-y-0.5",
 };
 
 export function Cta({ children, to, href, hash, variant = "solid", className = "", type }: CtaProps) {

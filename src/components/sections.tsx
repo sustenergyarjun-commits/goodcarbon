@@ -568,7 +568,7 @@ export function FinalCtaSection() {
             We deliver measurable EBITDA improvement through decarbonisation.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Cta to="/contact" className="bg-white text-deep hover:bg-silver">
+            <Cta to="/contact" variant="white">
               Start Your Energy Optimisation Journey
             </Cta>
             <Cta to="/contact" variant="light">

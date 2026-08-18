@@ -16,12 +16,12 @@ export function Hero() {
           height={1024}
           fetchPriority="high"
           decoding="async"
-          className="h-auto w-full object-contain md:max-h-[85vh] md:min-h-[75vh] md:object-cover md:object-center"
+          className="mx-auto h-auto w-full object-contain md:max-h-[86vh]"
         />
       </div>
       <div className="border-t border-white/10 bg-deep">
         <Container className="flex flex-wrap items-center gap-4 py-6">
-          <Cta href="#request" className="bg-white text-deep hover:bg-silver">
+          <Cta href="#request" variant="white">
             Request Service Today
           </Cta>
           <Cta to="/strategy" variant="light">
