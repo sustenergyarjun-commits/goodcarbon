@@ -17,9 +17,8 @@ export const NOTIFICATION_RECIPIENT = "jk@goodcarbon.in";
  */
 export async function notifyServiceRequest(data: ServiceRequestPayload) {
   try {
-    const mod = (await import(
-      /* @vite-ignore */ "@/lib/email-templates/send-email"
-    )) as {
+    const specifier = "@/lib/email-templates/send-email";
+    const mod = (await import(/* @vite-ignore */ specifier)) as {
       sendTemplateEmail: (
         template: string,
         to: string,
