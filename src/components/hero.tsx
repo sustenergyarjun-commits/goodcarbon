@@ -1,5 +1,6 @@
-import heroImage from "@/assets/hero.png.asset.json";
 import { Container, Cta } from "./ui-kit";
+
+const heroImage = { url: "/assets/hero.png" };
 
 export function Hero() {
   return (

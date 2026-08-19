@@ -1,6 +1,7 @@
-import strategyImage from "@/assets/strategy.png.asset.json";
 import { Reveal } from "./reveal";
 import { Card, Container, Cta, FlowChain, SectionHeading } from "./ui-kit";
+
+const strategyImage = { url: "/assets/strategy.png" };
 
 /* ---------------- Flagship service ---------------- */
 

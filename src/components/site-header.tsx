@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logo from "@/assets/logo.png.asset.json";
+
+const logo = { url: "/assets/logo.webp" };
 
 export const NAV = [
   { label: "Home", to: "/" },

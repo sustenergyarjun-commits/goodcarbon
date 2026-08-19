@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/logo.png.asset.json";
 import { NAV } from "./site-header";
 import { Container } from "./ui-kit";
+
+const logo = { url: "/assets/logo.webp" };
 
 export function SiteFooter() {
   return (
