@@ -1,4 +1,4 @@
-import strategyImage from "@/assets/strategy.png.asset.json";
+const strategyImage = { url: "/assets/strategy.png" };
 import { Reveal } from "./reveal";
 import { Card, Container, Cta, FlowChain, SectionHeading } from "./ui-kit";
 
