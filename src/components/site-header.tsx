@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+
 const logo = { url: "/assets/logo.webp" };
 
 export const NAV = [
